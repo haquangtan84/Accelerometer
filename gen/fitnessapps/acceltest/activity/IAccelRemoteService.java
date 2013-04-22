@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: /home/tanhq/java/projects/Accelerometer-Logging/src/fitnessapps/acceltest/activity/IAccelRemoteService.aidl
+ * Original file: /Users/haquangtan/Projects/Accelerometer/src/fitnessapps/acceltest/activity/IAccelRemoteService.aidl
  */
 package fitnessapps.acceltest.activity;
 public interface IAccelRemoteService extends android.os.IInterface

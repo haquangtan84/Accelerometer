@@ -36,14 +36,4 @@
         android:layout_marginBottom="30dp"
         android:text="@string/stop_btn" 
         android:onClick="stopButtonClicked"/>
-    
-    <EditText
-        android:id="@+id/editview"
-        android:layout_width="240dip"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/stopBtn"
-        android:layout_centerHorizontal="true"
-        android:hint="Enter ID Number"
-        android:inputType="phone" />
-
 </RelativeLayout>

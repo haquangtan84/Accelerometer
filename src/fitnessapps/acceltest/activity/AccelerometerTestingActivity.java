@@ -2,6 +2,8 @@ package fitnessapps.acceltest.activity;
 
 
 
+import java.util.Date;
+
 import fitnessapps.acceltest.activity.R;
 
 import android.app.Activity;
@@ -16,7 +18,7 @@ import android.widget.Toast;
 public class AccelerometerTestingActivity extends Activity {
 
 	private boolean started;
-	EditText inputField;
+	//EditText inputField;
 	
 	
 	/** Called when the activity is first created. */
@@ -25,7 +27,6 @@ public class AccelerometerTestingActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		started = false;
-		inputField = (EditText) findViewById(R.id.editview);
 		/*manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		manager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
 				MINIMUM_TIME_BETWEEN_UPDATES,
@@ -36,32 +37,12 @@ public class AccelerometerTestingActivity extends Activity {
 		if (started) {
 			Toast.makeText(AccelerometerTestingActivity.this, "Service already started", Toast.LENGTH_SHORT).show();
 		}
-		else if (inputField.getText().length() == 0) {
-			
-			AlertDialog.Builder alertBox = new AlertDialog.Builder(this);
-	    	alertBox.setMessage("Must enter a valid ID");
-			alertBox.setPositiveButton("OK",
-					new DialogInterface.OnClickListener() {
-						public void onClick(
-								DialogInterface dialogInterface,
-								int arg1) {
-							dialogInterface.cancel();
-						}
-					});
-			alertBox.show();
-		}
-		else {
-			String idNumber = inputField.getText().toString();
-			
-			Intent serviceIntent = new Intent();
-			serviceIntent.putExtra("IDNUMBER", idNumber);
-			serviceIntent.setClassName("fitnessapps.acceltest.activity", "fitnessapps.acceltest.activity.AccelerometerService");
-			startService(serviceIntent);
-			started = true;
-			inputField.setEnabled(false);
-			inputField.setFocusable(false);
-		}
-		
+	
+		Intent serviceIntent = new Intent();
+		serviceIntent.putExtra("IDNUMBER", String.valueOf(System.currentTimeMillis()));
+		serviceIntent.setClassName("fitnessapps.acceltest.activity", "fitnessapps.acceltest.activity.AccelerometerService");
+		startService(serviceIntent);
+		started = true;
 	}
 	
 	public void stopButtonClicked(View view) {
@@ -72,10 +53,6 @@ public class AccelerometerTestingActivity extends Activity {
             serviceIntent.setClassName("fitnessapps.acceltest.activity", "fitnessapps.acceltest.activity.AccelerometerService");
             stopService(serviceIntent);
             started = false;
-            inputField.setFocusable(true);
-            inputField.setEnabled(true);
-            inputField.setFocusableInTouchMode(true);
-            
       }
 	}
 	

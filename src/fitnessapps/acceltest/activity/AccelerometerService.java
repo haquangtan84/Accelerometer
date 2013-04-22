@@ -103,7 +103,7 @@ public class AccelerometerService extends Service implements
 		try {
 			File card = Environment.getExternalStorageDirectory();
 			File directory = new File(card.getAbsolutePath()
-					+ "/test/accelerometerdata");
+					+ "/accelerometer/accelerometerdata");
 			directory.mkdirs();
 
 			Date time = new Date();
@@ -134,10 +134,7 @@ public class AccelerometerService extends Service implements
 			sampleFile.createNewFile();
 
 			fileWriter = new FileWriter(sampleFile);
-			fileWriter.write("--------------------------------Data File Created by Motorola Droid Android v2.0.1-----------------------------------------\n");
-			fileWriter.write("Epoch Period (hh:mm:ss) 00:00:15\n");
-			fileWriter.write("---------------------------------------------------------------------------------------------------------------------------\n");
-			fileWriter.write("Timestamp,X-Acceleration,Y-Acceleration,Z-Acceleration\n");
+			fileWriter.write("X-Acceleration,Y-Acceleration,Z-Acceleration\n");
 			//fileWriter.close();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -162,25 +159,11 @@ public class AccelerometerService extends Service implements
 			gameName = null;
 		}
 		try {
-			//FileWriter fileWriter = new FileWriter(writeFile);
-		if (data.getGameName() != null && data.getEndOfGame() != true) {
-			fileWriter.write("-----------------"
-					+ data.getGameName()
-					+ " "
-					+ data.getTime()
-					+ " ------------------------------------------\n");
-		}
-		fileWriter.write(data.getTime() + "," + data.getAccelerationX()
+		
+		fileWriter.write(data.getAccelerationX()
 				+ "," + data.getAccelerationY() + ","
 				+ data.getAccelerationZ() + "\n");
-		if (data.getEndOfGame() == true && data.getGameName() != null) {
-			fileWriter.write("-----------------END OF "
-					+ data.getGameName()
-					+ " "
-					+ data.getTime()
-					+ " ------------------------------------------\n");
-		}
-		//fileWriter.close();
+		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
