@@ -1,4 +1,4 @@
-Accelerometer
-=============
+Accelerometer-Logging
+=====================
 
-Accelerometer Applications for Android
+An application and service for tracking accelerometer data, meant to be used with Kacie's Fitness Apps.
